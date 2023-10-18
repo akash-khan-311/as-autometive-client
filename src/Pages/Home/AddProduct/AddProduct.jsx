@@ -14,6 +14,7 @@ const AddProduct = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const description = form.description.value;
+    
 
     fetch("https://as-automitive-server.vercel.app/addProduct", {
       method: "POST",

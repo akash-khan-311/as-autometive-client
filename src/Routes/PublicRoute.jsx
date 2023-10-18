@@ -77,6 +77,7 @@ const Router = createBrowserRouter([
         loader: () =>
           fetch("https://as-automitive-server.vercel.app/tesla/advertisement"),
       },
+ 
     ],
   },
 ]);
