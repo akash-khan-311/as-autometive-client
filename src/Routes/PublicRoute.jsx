@@ -12,6 +12,7 @@ import BMW from "../Pages/BMW/BMW";
 import Marcedez from "../Pages/Marcedez/Marcedez";
 import Tesla from "../Pages/Tesla/Tesla";
 import Honda from "../Pages/Honda/Honda";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = createBrowserRouter([
   { path: "*", element: <div>Error</div> },
@@ -20,11 +21,30 @@ const Router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/", element: <Home />, loader: () => fetch("/brands.json") },
-      { path: "/addproduct", element: <AddProduct /> },
-      { path: "/mycart", element: <MyCart /> },
+      {
+        path: "/addproduct",
+        element: (
+          <PrivateRoute>
+            <AddProduct />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/mycart",
+        element: (
+          <PrivateRoute>
+            <MyCart />
+          </PrivateRoute>
+        ),
+      },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
-      { path: "/toyota", element: <Toyota /> },
+      {
+        path: "/toyota",
+        element: <Toyota />,
+        loader: () =>
+          fetch("https://as-automitive-server.vercel.app/toyota/advertisement"),
+      },
       { path: "/ford", element: <Ford /> },
       { path: "/bmw", element: <BMW /> },
       { path: "/marcedes", element: <Marcedez /> },

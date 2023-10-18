@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import NavMenu from "../../components/NavMenu/NavMenu";
+import { AuthContext } from "../../Context/AuthProvider";
 const Login = () => {
+  const { login, googleLogin } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -23,6 +28,23 @@ const Login = () => {
       toast.error("Enter Your Password");
       return;
     }
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        toast.success("user login successfully");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+  const handleGoogleLogIn = () => {
+    googleLogin()
+      .then(() => {
+        navigate(from, { replace: true });
+        toast.success("Login Success");
+      })
+      .catch((err) => toast.error(err.message));
   };
   return (
     <div>
@@ -58,7 +80,7 @@ const Login = () => {
           <div className="social-account-container">
             <span className="title">Or Sign in with</span>
             <div className="social-accounts">
-              <button class="button google">
+              <button onClick={handleGoogleLogIn} class="button google">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   preserveAspectRatio="xMidYMid"

@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   MobileNav,
   Typography,
   Button,
   IconButton,
+  Avatar,
 } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/icon/logo.png";
 import "./NavMenu.css";
+import { AuthContext } from "../../Context/AuthProvider";
+import { FaSignOutAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 const NavMenu = () => {
   const [openNav, setOpenNav] = useState(false);
 
@@ -18,17 +22,13 @@ const NavMenu = () => {
     );
   }, []);
 
+  const { user, logOut } = useContext(AuthContext);
 
-
-
-
-  
-
-
-
-
-
-
+  const handleLogout = () => {
+    logOut()
+      .then(() => toast.success("User logged out"))
+      .catch((error) => toast.error(error.message));
+  };
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-white">
@@ -47,11 +47,6 @@ const NavMenu = () => {
           My Cart
         </NavLink>
       </Typography>
-      <Typography as="li" variant="large" className="p-1 font-normal">
-        <NavLink to={"/login"} className="flex items-center">
-          Login
-        </NavLink>
-      </Typography>
     </ul>
   );
   return (
@@ -64,15 +59,25 @@ const NavMenu = () => {
             </Link>
           </Typography>
           <div className="hidden lg:block">{navList}</div>
-          <Link to={"/login"}>
-            <Button
-              variant="gradient"
-              size="sm"
-              className="hidden lg:inline-block"
-            >
-              <span>Login</span>
-            </Button>
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-5">
+              <h2 className="font-semibold text-lg">{user.displayName}</h2>
+              <button onClick={handleLogout} className="">
+                <FaSignOutAlt className="text-3xl" />
+              </button>
+            </div>
+          ) : (
+            <Link to={"/login"}>
+              <Button
+                variant="gradient"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <span>Login</span>
+              </Button>
+            </Link>
+          )}
+
           <IconButton
             variant="text"
             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

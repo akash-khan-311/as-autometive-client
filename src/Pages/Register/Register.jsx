@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import NavMenu from "../../components/NavMenu/NavMenu";
 
 const Register = () => {
   const { register, updateName, googleLogin } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -43,6 +46,7 @@ const Register = () => {
         toast.success("Registration Success");
         const result = result.user;
         updateName(name).then().catch();
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         toast.error("something went wrong, Please try again later");
@@ -51,8 +55,9 @@ const Register = () => {
   };
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((res) => {
+      .then(() => {
         toast.success("Google Sign In Success");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         toast.error("something went wrong, Please Try Again Later");
