@@ -10,8 +10,8 @@ import {
   Button,
 } from "@material-tailwind/react";
 const Toyota = () => {
-  const [products, setProducts] = useState([]);
   const images = useLoaderData();
+  const [products, setProducts] = useState([]);
   console.log(products);
   useEffect(() => {
     fetch("https://as-automitive-server.vercel.app/toyota/products")
@@ -37,7 +37,7 @@ const Toyota = () => {
             <img
               src={image.image}
               alt="image 1"
-              className="h-full w-full object-cover "
+              className="h-full w-full  "
             />
           </div>
         ))}
@@ -51,7 +51,7 @@ const Toyota = () => {
                   <img
                     src={product.image}
                     alt="image"
-                    className="object-cover w-full h-full"
+                    className=" w-full h-full"
                   />
                 </div>
                 <div className="p-6 text-white">

@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Slider from "react-slick";
 import NavMenu from "../../components/NavMenu/NavMenu";
 
 const Honda = () => {
   const images = useLoaderData();
+  const [products, setProducts] = useState([]);
+  console.log(products);
+  useEffect(() => {
+    fetch("https://as-automitive-server.vercel.app/honda/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
   const settings = {
     dots: true,
     infinite: true,
