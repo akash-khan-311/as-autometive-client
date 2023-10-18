@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   MobileNav,
   Typography,
@@ -9,14 +9,26 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/icon/logo.png";
 import "./NavMenu.css";
 const NavMenu = () => {
-  const [openNav, setOpenNav] = React.useState(false);
+  const [openNav, setOpenNav] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+
+
+
+
+
+  
+
+
+
+
+
+
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-white">
@@ -36,8 +48,8 @@ const NavMenu = () => {
         </NavLink>
       </Typography>
       <Typography as="li" variant="large" className="p-1 font-normal">
-        <NavLink to={"/addproduct"} className="flex items-center">
-          Add Product
+        <NavLink to={"/login"} className="flex items-center">
+          Login
         </NavLink>
       </Typography>
     </ul>

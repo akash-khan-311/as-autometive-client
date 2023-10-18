@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import NavMenu from "../../../components/NavMenu/NavMenu";
 
 const MyCart = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <NavMenu />
+    </div>
+  );
 };
 
 export default MyCart;

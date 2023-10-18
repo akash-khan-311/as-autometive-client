@@ -6,6 +6,12 @@ import AddProduct from "../Pages/Home/AddProduct/AddProduct";
 import MyCart from "../Pages/Home/MyCart/MyCart";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
+import Toyota from "../Pages/Toyota/Toyota";
+import Ford from "../Pages/Ford/Ford";
+import BMW from "../Pages/BMW/BMW";
+import Marcedez from "../Pages/Marcedez/Marcedez";
+import Tesla from "../Pages/Tesla/Tesla";
+import Honda from "../Pages/Honda/Honda";
 
 const Router = createBrowserRouter([
   { path: "*", element: <div>Error</div> },
@@ -13,11 +19,17 @@ const Router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/", element: <Home />, loader: () => fetch("/brands.json") },
       { path: "/addproduct", element: <AddProduct /> },
       { path: "/mycart", element: <MyCart /> },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
+      { path: "/toyota", element: <Toyota /> },
+      { path: "/ford", element: <Ford /> },
+      { path: "/bmw", element: <BMW /> },
+      { path: "/marcedes", element: <Marcedez /> },
+      { path: "/honda", element: <Honda /> },
+      { path: "/tesla", element: <Tesla /> },
     ],
   },
 ]);
