@@ -9,6 +9,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyCtvjmhm8hQep2OLfC_OUcNRb0_AxrMcMc",
   authDomain: "as-autometive-auth.firebaseapp.com",
   projectId: "as-autometive-auth",
+  
   storageBucket: "as-autometive-auth.appspot.com",
   messagingSenderId: "1088185600620",
   appId: "1:1088185600620:web:b04fb260cae41d65fc6649",

@@ -45,11 +45,38 @@ const Router = createBrowserRouter([
         loader: () =>
           fetch("https://as-automitive-server.vercel.app/toyota/advertisement"),
       },
-      { path: "/ford", element: <Ford /> },
-      { path: "/bmw", element: <BMW /> },
-      { path: "/marcedes", element: <Marcedez /> },
-      { path: "/honda", element: <Honda /> },
-      { path: "/tesla", element: <Tesla /> },
+      {
+        path: "/ford",
+        element: <Ford />,
+        loader: () =>
+          fetch("https://as-automitive-server.vercel.app/ford/advertisement"),
+      },
+      {
+        path: "/bmw",
+        element: <BMW />,
+        loader: () =>
+          fetch("https://as-automitive-server.vercel.app/bmw/advertisement"),
+      },
+      {
+        path: "/mercedes",
+        element: <Marcedez />,
+        loader: () =>
+          fetch(
+            "https://as-automitive-server.vercel.app/mercedes/advertisement"
+          ),
+      },
+      {
+        path: "/honda",
+        element: <Honda />,
+        loader: () =>
+          fetch("https://as-automitive-server.vercel.app/honda/advertisement"),
+      },
+      {
+        path: "/tesla",
+        element: <Tesla />,
+        loader: () =>
+          fetch("https://as-automitive-server.vercel.app/tesla/advertisement"),
+      },
     ],
   },
 ]);

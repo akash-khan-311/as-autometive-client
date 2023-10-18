@@ -21,9 +21,9 @@ const BrandCard = ({ brand }) => {
       data-aos-easing="ease-in-out"
     >
       <Card className="text-white backdrop-blur-sm bg-white/20">
-        <CardHeader color="blue-gray" className="m-0 cursor-pointer ">
+        <CardHeader color="blue-gray" className="m-0 h-52 cursor-pointer ">
           <img
-            className="hover:scale-110 overflow-hidden duration-1000"
+            className="hover:scale-110 w-full h-full overflow-hidden duration-1000"
             src={brand_image}
           />
         </CardHeader>

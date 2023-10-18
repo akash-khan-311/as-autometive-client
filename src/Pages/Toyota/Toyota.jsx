@@ -1,12 +1,16 @@
-import React from "react";
-import { Carousel } from "@material-tailwind/react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { useLoaderData } from "react-router-dom";
 import NavMenu from "../../components/NavMenu/NavMenu";
 const Toyota = () => {
+  const [products, setProducts] = useState(null);
   const images = useLoaderData();
+
+  useEffect(() => {
+    fetch("https://as-automitive-server.vercel.app/toyota/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
 
   const settings = {
     dots: true,
@@ -22,7 +26,7 @@ const Toyota = () => {
       <NavMenu />
       <Slider {...settings} className="rounded-xl h-[60vh]">
         {images.map((image) => (
-          <div className="h-[60vh] w-full">
+          <div className="h-[30vh] md:h-[40vh] lg:h-[60vh] w-full">
             <img
               src={image.image}
               alt="image 1"
@@ -31,7 +35,6 @@ const Toyota = () => {
           </div>
         ))}
       </Slider>
-      <h1>kichu ekta</h1>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import NavMenu from "../../../components/NavMenu/NavMenu";
 import { Button } from "@material-tailwind/react";
+import swal from "sweetalert";
 
 const AddProduct = () => {
   const handleAddProduct = (e) => {
@@ -13,23 +14,27 @@ const AddProduct = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const description = form.description.value;
-    const product = {
-      name,
-      brandName,
-      price,
-      rating,
-      image,
-      description,
-      type,
-    };
-    fetch("http://localhost:3000/addProduct", {
+
+    fetch("https://as-automitive-server.vercel.app/addProduct", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(product),
+      body: JSON.stringify({
+        name,
+        brandName,
+        price,
+        rating,
+        image,
+        description,
+        type,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          swal("Good job!", "Product Added Successfully!", "success");
+          form.reset();
+          console.log(data);
+        }
       });
   };
   return (
