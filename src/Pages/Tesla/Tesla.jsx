@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Slider from "react-slick";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import { Button } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 const Tesla = () => {
   const images = useLoaderData();
   const [products, setProducts] = useState([]);
@@ -23,6 +24,9 @@ const Tesla = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Tesla</title>
+      </Helmet>
       <NavMenu />
       <Slider {...settings} className="rounded-xl h-[60vh]">
         {images.map((image) => (

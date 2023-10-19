@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import NavMenu from "../../components/NavMenu/NavMenu";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { register, updateName, googleLogin } = useContext(AuthContext);
@@ -65,6 +66,9 @@ const Register = () => {
   };
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <NavMenu />
       <Toaster position="top-center" reverseOrder={false} />
       <div className="flex justify-center">

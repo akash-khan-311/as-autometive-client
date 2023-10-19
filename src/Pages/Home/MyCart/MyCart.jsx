@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Button } from "@material-tailwind/react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyCart = () => {
   const loadedProducts = useLoaderData();
@@ -36,6 +37,9 @@ const MyCart = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>My Cart</title>
+      </Helmet>
       <NavMenu />
       <div className="container mx-auto mt-10">
         <div className="flex flex-col gap-5 lg:flex-row shadow-md my-10">

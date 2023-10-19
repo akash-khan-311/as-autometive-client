@@ -3,16 +3,17 @@ import { Link, useLoaderData } from "react-router-dom";
 import Slider from "react-slick";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import { Button } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 
 const Marcedez = () => {
   const images = useLoaderData();
-   const [products, setProducts] = useState([]);
-   console.log(products);
-   useEffect(() => { 
-     fetch("https://as-automitive-server.vercel.app/mercedes/products")
-       .then((res) => res.json())
-       .then((data) => setProducts(data));
-   }, []);
+  const [products, setProducts] = useState([]);
+  console.log(products);
+  useEffect(() => {
+    fetch("https://as-automitive-server.vercel.app/mercedes/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
   const settings = {
     dots: true,
     infinite: true,
@@ -25,6 +26,9 @@ const Marcedez = () => {
   return (
     <div>
       <NavMenu />
+      <Helmet>
+        <title>Mercedes</title>
+      </Helmet>
       <Slider {...settings} className="rounded-xl h-[60vh]">
         {images.map((image) => (
           <div className="h-[30vh] md:h-[40vh] lg:h-[60vh] w-full">

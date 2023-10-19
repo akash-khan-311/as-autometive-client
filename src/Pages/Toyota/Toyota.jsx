@@ -9,6 +9,7 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 const Toyota = () => {
   const images = useLoaderData();
   const [products, setProducts] = useState([]);
@@ -30,15 +31,14 @@ const Toyota = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Toyota</title>
+      </Helmet>
       <NavMenu />
       <Slider {...settings} className="rounded-xl h-[60vh]">
         {images.map((image) => (
           <div className="h-[30vh] md:h-[40vh] lg:h-[60vh] w-full">
-            <img
-              src={image.image}
-              alt="image 1"
-              className="h-full w-full  "
-            />
+            <img src={image.image} alt="image 1" className="h-full w-full  " />
           </div>
         ))}
       </Slider>

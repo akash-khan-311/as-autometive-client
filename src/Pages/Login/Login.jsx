@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import { AuthContext } from "../../Context/AuthProvider";
+import { Helmet } from "react-helmet";
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
   const location = useLocation();
@@ -48,6 +49,9 @@ const Login = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <NavMenu />
       <Toaster position="top-center" reverseOrder={false} />
       <div className="flex justify-center">

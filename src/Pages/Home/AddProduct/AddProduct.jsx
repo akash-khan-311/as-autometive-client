@@ -2,6 +2,7 @@ import React from "react";
 import NavMenu from "../../../components/NavMenu/NavMenu";
 import { Button } from "@material-tailwind/react";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet";
 
 const AddProduct = () => {
   const handleAddProduct = (e) => {
@@ -39,6 +40,9 @@ const AddProduct = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Add Product</title>
+      </Helmet>
       <NavMenu />
       <div className="container mx-auto py-10">
         <div className="backdrop-blur-2xl bg-white/10 p-4 md:p-10 lg:p-20 space-y-3 rounded-xl">

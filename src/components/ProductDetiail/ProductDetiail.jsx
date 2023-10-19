@@ -2,6 +2,7 @@ import { Button } from "@material-tailwind/react";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import NavMenu from "../NavMenu/NavMenu";
+import { Helmet } from "react-helmet";
 
 const ProductDetiail = () => {
   const product = useLoaderData();
@@ -23,14 +24,20 @@ const ProductDetiail = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId){
-           swal("Good job!", "Product Added Successfully!", "success");
-        } console.log(data);
+        if (data.insertedId) {
+          swal("Good job!", "Product Added Successfully!", "success");
+        }
+        console.log(data);
       });
   };
   return (
     <div>
       <NavMenu />
+      <Helmet>
+        <title>
+          {brandName} - {name}
+        </title>
+      </Helmet>
       <div className="container mx-auto">
         <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-center">
           {name}
