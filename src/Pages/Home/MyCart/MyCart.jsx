@@ -3,10 +3,37 @@ import NavMenu from "../../../components/NavMenu/NavMenu";
 import { Link, useLoaderData } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Button } from "@material-tailwind/react";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
   const loadedProducts = useLoaderData();
   const [products, setProducts] = useState(loadedProducts);
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://as-automitive-server.vercel.app/products/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              const remainingProducst = products.filter((pr) => pr._id !== _id);
+              setProducts(remainingProducst);
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <NavMenu />
@@ -80,7 +107,7 @@ const MyCart = () => {
                   ${product.price}
                 </span>
                 <span className="">
-                  <button>
+                  <button onClick={() => handleDelete(product._id)}>
                     <AiOutlineCloseCircle className="text-3xl text-red-300 hover:text-red-800" />
                   </button>
                 </span>

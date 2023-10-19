@@ -15,9 +15,10 @@ import Honda from "../Pages/Honda/Honda";
 import PrivateRoute from "./PrivateRoute";
 import ProductDetiail from "../components/ProductDetiail/ProductDetiail";
 import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
+import NotFound from "../Pages/NotFound/NotFound";
 
 const Router = createBrowserRouter([
-  { path: "*", element: <div>Error</div> },
+  { path: "*", element: <NotFound /> },
   {
     path: "/",
     element: <Root />,

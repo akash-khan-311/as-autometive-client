@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
 import { Spinner } from "@material-tailwind/react";
+import Loading from "../components/Loading/Loading";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -10,7 +11,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center py-40">
-        <Spinner className="h-16 w-16 text-white" />;
+        <Loading />
       </div>
     );
   }
