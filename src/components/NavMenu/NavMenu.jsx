@@ -60,7 +60,7 @@ const NavMenu = () => {
           </Typography>
           <div className="hidden lg:block">{navList}</div>
           {user ? (
-            <div className="flex items-center gap-5">
+            <div className="lg:flex items-center justify-center  hidden  gap-5">
               <h2 className="font-semibold text-lg">{user.displayName}</h2>
               <button onClick={handleLogout} className="">
                 <FaSignOutAlt className="text-3xl" />
@@ -116,14 +116,27 @@ const NavMenu = () => {
             )}
           </IconButton>
         </div>
-        <MobileNav open={openNav}>
-          <div className="container mx-auto">
+        <MobileNav className="absolute z-10 " open={openNav}>
+          <div className="container mx-auto  backdrop-blur-lg bg-white/20 p-6 relative">
             {navList}
-            <Link to={"/login"}>
-              <Button variant="" size="sm" fullWidth className="mb-2">
-                <span>Login</span>
-              </Button>
-            </Link>
+            {user ? (
+              <div className="flex items-center  text-white  gap-5">
+                <h2 className="font-semibold text-lg">{user.displayName}</h2>
+                <button onClick={handleLogout} className="">
+                  <FaSignOutAlt className="text-3xl" />
+                </button>
+              </div>
+            ) : (
+              <Link to={"/login"}>
+                <Button
+                  variant="gradient"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
+                  <span>Login</span>
+                </Button>
+              </Link>
+            )}
           </div>
         </MobileNav>
       </nav>

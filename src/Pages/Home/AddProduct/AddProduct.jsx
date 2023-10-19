@@ -14,7 +14,6 @@ const AddProduct = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const description = form.description.value;
-    
 
     fetch("https://as-automitive-server.vercel.app/addProduct", {
       method: "POST",
@@ -47,10 +46,8 @@ const AddProduct = () => {
             Add a New Product
           </h1>
           <p className="text-center text-gray-500">
-            It is a long established fact that a reader will be distraceted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using Content here.
+            There is form .. in using this form you can add your latest product
+            on your site ...
           </p>
           <form onSubmit={handleAddProduct}>
             {/* form name and quantity Row */}

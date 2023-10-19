@@ -8,6 +8,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import "./BrandCard.css";
 
 const BrandCard = ({ brand }) => {
   const { brand_name, brand_image } = brand;
@@ -20,26 +21,16 @@ const BrandCard = ({ brand }) => {
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
     >
-      <Card className="text-white backdrop-blur-sm bg-white/20">
-        <CardHeader color="blue-gray" className="m-0 h-52 cursor-pointer ">
-          <img
-            className="hover:scale-110 w-full h-full overflow-hidden duration-1000"
-            src={brand_image}
-          />
-        </CardHeader>
-        <CardBody>
-          <Typography variant="h2" className="mb-2 text-center">
+      <Link to={`/${brand_name.toLowerCase()}`}>
+        <div class="book backdrop-blur-lg bg-white/20">
+          <p className="text text-6xl italic font-semibold text-white">
             {brand_name}
-          </Typography>
-        </CardBody>
-        <CardFooter className="pt-0 text-center ">
-          <Link to={`/${brand_name.toLowerCase()}`}>
-            <Button color="blue" className="w-full">
-              See product
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
+          </p>
+          <div class="cover">
+            <img className="h-full" src={brand_image} alt="" />
+          </div>
+        </div>
+      </Link>
     </div>
   );
 };

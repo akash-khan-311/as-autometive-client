@@ -59,7 +59,7 @@ const MyCart = () => {
                 Total
               </h3>
             </div>
-            {products.map((product) => (
+            {products?.map((product) => (
               <div
                 key={product._id}
                 className="flex items-center hover:backdrop-blur-3xl hover:bg-white/10 -mx-8 px-6 py-5"
