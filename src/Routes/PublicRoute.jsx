@@ -14,6 +14,7 @@ import Tesla from "../Pages/Tesla/Tesla";
 import Honda from "../Pages/Honda/Honda";
 import PrivateRoute from "./PrivateRoute";
 import ProductDetiail from "../components/ProductDetiail/ProductDetiail";
+import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
 
 const Router = createBrowserRouter([
   { path: "*", element: <div>Error</div> },
@@ -37,6 +38,7 @@ const Router = createBrowserRouter([
             <MyCart />
           </PrivateRoute>
         ),
+        loader: () => fetch("https://as-automitive-server.vercel.app/products"),
       },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
@@ -80,7 +82,21 @@ const Router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <ProductDetiail />,
+        element: (
+          <PrivateRoute>
+            <ProductDetiail />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://as-automitive-server.vercel.app/details/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateProduct />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://as-automitive-server.vercel.app/details/${params.id}`),
       },

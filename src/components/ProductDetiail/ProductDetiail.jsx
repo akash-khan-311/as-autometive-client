@@ -7,7 +7,27 @@ const ProductDetiail = () => {
   const product = useLoaderData();
   const { brandName, name, price, rating, type, _id, image, description } =
     product[0];
-  console.log(product);
+  const handleAddToCart = () => {
+    fetch("https://as-automitive-server.vercel.app/product", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        brandName,
+        name,
+        price,
+        rating,
+        type,
+        image,
+        description,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId){
+           swal("Good job!", "Product Added Successfully!", "success");
+        } console.log(data);
+      });
+  };
   return (
     <div>
       <NavMenu />
@@ -45,11 +65,13 @@ const ProductDetiail = () => {
                   {description}
                 </p>
                 <div className="flex justify-center ">
-                 
-                    <Button className="w-full" color="blue">
-                     ADD To cart
-                    </Button>
-                 
+                  <Button
+                    onClick={() => handleAddToCart(product[0])}
+                    className="w-full"
+                    color="blue"
+                  >
+                    ADD To cart
+                  </Button>
                 </div>
               </div>
             </div>
