@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 
 const Root = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Outlet />
       <Footer />
     </div>

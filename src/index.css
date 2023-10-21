@@ -10,4 +10,5 @@ body {
   background-position: center;
   background-attachment: fixed;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
