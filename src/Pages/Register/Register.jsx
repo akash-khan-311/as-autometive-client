@@ -43,9 +43,9 @@ const Register = () => {
     }
 
     register(email, password)
-      .then((res) => {
+      .then((result) => {
         toast.success("Registration Success");
-        const result = result.user;
+        const user = result.user;
         updateName(name).then().catch();
         navigate(from, { replace: true });
       })

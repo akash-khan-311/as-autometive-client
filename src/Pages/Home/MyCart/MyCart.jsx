@@ -71,8 +71,8 @@ const MyCart = () => {
                 >
                   <div className="flex w-2/5">
                     {/* product */}
-                    <div className="w-40">
-                      <img className="h-24" src={product.image} alt />
+                    <div className="w-56">
+                      <img className="h-34 w-full" src={product.image} alt />
                     </div>
                     <div className="flex flex-col justify-between ml-4 flex-grow">
                       <span className="font-bold text-xl text-white">
@@ -81,9 +81,6 @@ const MyCart = () => {
                       <span className="text-red-500 text-xl">
                         {product.brandName}
                       </span>
-                      <a className="font-semibold hover:text-red-500 text-gray-500 text-xs cursor-pointer">
-                        Remove
-                      </a>
                     </div>
                   </div>
                   <div className="flex justify-center w-1/5">
