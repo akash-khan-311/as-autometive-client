@@ -6,7 +6,7 @@ const Banner = () => {
     <div className="banner">
       <NavMenu />
       <div className="container mx-auto">
-        <div className="text-white py-5 h-[50vh] md:h-[60vh] lg:h-[95vh]   flex items-center w-full md:w-3/4 ">
+        <div className="text-white py-5 h-[70vh] md:h-[80vh] lg:h-[95vh]   flex items-center w-full md:w-3/4 ">
           <div className="space-y-5 px-5 lg:px-0 text-center md:text-left ">
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-semibold "

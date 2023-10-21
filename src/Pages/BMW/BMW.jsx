@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import { Button } from "@material-tailwind/react";
 import { Helmet } from "react-helmet";
+import { Rating } from "@mui/material";
 
 const BMW = () => {
   const images = useLoaderData();
@@ -65,7 +66,14 @@ const BMW = () => {
                       </p>
                     </div>
                     <div>
-                      <p className="text-lg">Ratings: {product.rating}</p>
+                      <p className="text-lg flex items-center">
+                        Ratings:
+                        <Rating
+                          name="read-only"
+                          value={product.rating}
+                          readOnly
+                        />
+                      </p>
                     </div>
                   </div>
                   <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed ">

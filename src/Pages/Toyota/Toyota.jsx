@@ -10,6 +10,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Helmet } from "react-helmet";
+import { Rating } from "@mui/material";
 const Toyota = () => {
   const images = useLoaderData();
   const [products, setProducts] = useState([]);
@@ -72,8 +73,13 @@ const Toyota = () => {
                         </p>
                       </div>
                       <div>
-                        <p className="text-lg">
-                          Ratings: {product.rating} Star
+                        <p className="text-lg flex items-center">
+                          Ratings:
+                          <Rating
+                            name="read-only"
+                            value={product.rating}
+                            readOnly
+                          />
                         </p>
                       </div>
                     </div>
